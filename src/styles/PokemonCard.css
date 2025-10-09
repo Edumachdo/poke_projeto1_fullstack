@@ -1,0 +1,70 @@
+.pokemon-card {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.pokemon-image {
+  object-fit: contain;
+}
+
+.pokemon-name {
+  text-transform: capitalize;
+}
+
+.pokemon-types {
+  margin-bottom: 16px;
+}
+
+.pokemon-details {
+  margin-bottom: 16px;
+}
+
+.pokemon-detail-label {
+  font-weight: bold;
+}
+
+.pokemon-detail-value {
+  margin-top: 4px;
+}
+
+.pokemon-section {
+  margin-bottom: 16px;
+}
+
+.pokemon-section-title {
+  margin-bottom: 8px;
+}
+
+.pokemon-abilities {
+  margin-bottom: 16px;
+}
+
+.pokemon-ability-chip {
+  margin: 2px;
+}
+
+.pokemon-stats {
+  margin-bottom: 8px;
+}
+
+.pokemon-stat-label {
+  margin-bottom: 4px;
+}
+
+.pokemon-weaknesses {
+  margin-bottom: 16px;
+}
+
+.pokemon-weakness-chip {
+  margin: 2px;
+}
+
+.pokemon-audio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pokemon-audio-text {
+  margin-left: 8px;
+}
