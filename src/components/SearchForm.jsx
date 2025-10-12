@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Box, Paper } from "@mui/material";
-import { useSearch } from "../hooks/useSearch";
+import { useSearch } from "../contexts/useSearch";
 
 function SearchForm() {
   const [input, setInput] = useState("");
