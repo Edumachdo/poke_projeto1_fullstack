@@ -15,6 +15,7 @@ import {
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import PokemonWeaknesses from "./PokemonWeaknesses";
+import { typeWeaknesses } from "../contexts/typeWeaknesses";
 import "./PokemonCard.css";
 
 function PokemonCard({ pokemon }) {
@@ -28,28 +29,7 @@ function PokemonCard({ pokemon }) {
   const typeNames = types?.map((type) => type.type.name) || [];
   const abilityNames = abilities?.map((ability) => ability.ability.name) || [];
 
-  // Calcular fraquezas únicas
-  const typeWeaknesses = {
-    normal: ["fighting"],
-    fire: ["water", "ground", "rock"],
-    water: ["grass", "electric"],
-    grass: ["fire", "ice", "poison", "flying", "bug"],
-    electric: ["ground"],
-    ice: ["fire", "fighting", "rock", "steel"],
-    fighting: ["flying", "psychic", "fairy"],
-    poison: ["ground", "psychic"],
-    ground: ["water", "grass", "ice"],
-    flying: ["electric", "ice", "rock"],
-    psychic: ["bug", "ghost", "dark"],
-    bug: ["fire", "flying", "rock"],
-    rock: ["water", "grass", "fighting", "ground", "steel"],
-    ghost: ["ghost", "dark"],
-    dragon: ["ice", "dragon", "fairy"],
-    dark: ["fighting", "bug", "fairy"],
-    steel: ["fire", "fighting", "ground"],
-    fairy: ["poison", "steel"],
-  };
-
+  // Calcular fraquezas únicas usando o objeto importado
   const weaknesses = [
     ...new Set(typeNames.flatMap((type) => typeWeaknesses[type] || [])),
   ];

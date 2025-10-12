@@ -11,7 +11,7 @@ function SearchForm() {
     if (error) {
       clearError();
     }
-  }, [input]);
+  }, [input, error, clearError]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
