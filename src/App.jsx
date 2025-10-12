@@ -8,7 +8,7 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import { SearchProvider } from "./contexts/SearchProvider";
-import { useSearch } from "./hooks/useSearch";
+import { useSearch } from "./contexts/useSearch";
 import SearchForm from "./components/SearchForm";
 import PokemonCard from "./components/PokemonCard";
 import ErrorMessage from "./components/ErrorMessage";
