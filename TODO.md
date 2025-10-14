@@ -62,6 +62,13 @@
   - Executar `npm run dev`
   - Testar busca válida e inválida, validação, player de áudio
 
+- [x] **Alterar Busca para Substring e Múltiplos Resultados**
+
+  - Modificar SearchProvider para buscar lista de Pokémon filtrada por substring
+  - Alterar reducer para suportar lista de Pokémon
+  - Atualizar PokemonCard para renderizar múltiplos cards se lista
+  - Limitar resultados a 10 para performance
+
 - [ ] **Gerar Build e Deploy**
 
   - Comando: `npm run build`

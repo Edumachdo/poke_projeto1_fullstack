@@ -11,11 +11,11 @@ import {
 export function SearchProvider({ children }) {
   const [state, dispatch] = useReducer(searchReducer, initialState);
 
-  const searchPokemon = async (nameOrId) => {
-    if (!nameOrId.trim()) {
+  const searchPokemon = async (query) => {
+    if (!query.trim()) {
       dispatch({
         type: SEARCH_ERROR,
-        payload: "Nome ou ID do Pokémon é obrigatório.",
+        payload: "Termo de busca é obrigatório.",
       });
       return;
     }
@@ -23,14 +23,39 @@ export function SearchProvider({ children }) {
     dispatch({ type: SEARCH_START });
 
     try {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${nameOrId.toLowerCase()}`
+      // Primeiro, buscar a lista completa de Pokémon
+      const listResponse = await fetch(
+        "https://pokeapi.co/api/v2/pokemon?limit=1000"
       );
-      if (!response.ok) {
-        throw new Error("Pokémon não encontrado.");
+      if (!listResponse.ok) {
+        throw new Error("Erro ao buscar lista de Pokémon.");
       }
-      const data = await response.json();
-      dispatch({ type: SEARCH_SUCCESS, payload: data });
+      const listData = await listResponse.json();
+
+      // Filtrar Pokémon que contenham a substring no nome
+      const filteredPokemons = listData.results.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(query.toLowerCase())
+      );
+
+      if (filteredPokemons.length === 0) {
+        throw new Error("Nenhum Pokémon encontrado com essa substring.");
+      }
+
+      // Limitar a 10 resultados para performance
+      const limitedPokemons = filteredPokemons.slice(0, 10);
+
+      // Buscar detalhes de cada Pokémon
+      const pokemonDetails = await Promise.all(
+        limitedPokemons.map(async (pokemon) => {
+          const detailResponse = await fetch(pokemon.url);
+          if (!detailResponse.ok) {
+            throw new Error(`Erro ao buscar detalhes de ${pokemon.name}.`);
+          }
+          return await detailResponse.json();
+        })
+      );
+
+      dispatch({ type: SEARCH_SUCCESS, payload: pokemonDetails });
     } catch (error) {
       dispatch({ type: SEARCH_ERROR, payload: error.message });
     }

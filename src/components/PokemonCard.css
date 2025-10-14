@@ -1,6 +1,6 @@
 .pokemon-card {
+  width: 100%;
   max-width: 400px;
-  margin: 20px auto;
 }
 
 .pokemon-image {
@@ -53,6 +53,7 @@
 
 .pokemon-weaknesses {
   margin-bottom: 16px;
+  row-gap: 8px;
 }
 
 .pokemon-weakness-chip {

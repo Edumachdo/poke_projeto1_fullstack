@@ -1,6 +1,6 @@
 export const initialState = {
   loading: false,
-  pokemonData: null,
+  pokemonData: [],
   error: null,
 };
 
@@ -11,7 +11,7 @@ export const SEARCH_ERROR = "SEARCH_ERROR";
 export function searchReducer(state, action) {
   switch (action.type) {
     case SEARCH_START:
-      return { ...state, loading: true, error: null, pokemonData: null };
+      return { ...state, loading: true, error: null, pokemonData: [] };
     case SEARCH_SUCCESS:
       return {
         ...state,
@@ -23,7 +23,7 @@ export function searchReducer(state, action) {
       return {
         ...state,
         loading: false,
-        pokemonData: null,
+        pokemonData: [],
         error: action.payload,
       };
     default:

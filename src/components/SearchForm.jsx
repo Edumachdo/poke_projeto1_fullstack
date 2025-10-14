@@ -16,7 +16,7 @@ function SearchForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!input.trim()) {
-      setInputError("Por favor, insira o nome ou ID do Pokémon.");
+      setInputError("Por favor, insira um termo de busca.");
       return;
     }
     setInputError("");
@@ -27,7 +27,7 @@ function SearchForm() {
     <Paper className="search-form-paper">
       <Box component="form" onSubmit={handleSubmit} className="search-form-box">
         <TextField
-          label="Nome ou ID do Pokémon"
+          label="Termo de busca (substring do nome)"
           variant="outlined"
           value={input}
           onChange={(e) => setInput(e.target.value)}

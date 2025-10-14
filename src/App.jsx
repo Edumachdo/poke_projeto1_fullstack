@@ -26,10 +26,10 @@ function AppContent() {
             Busca de Pokémon
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">
-            Encontre informações sobre qualquer Pokémon pelo nome ou ID.
+            Encontre informações sobre Pokémon.
           </Typography>
         </Box>
-        <Grid container spacing={4} className="app-grid">
+        <Grid container spacing={12} className="app-grid">
           <Grid item xs={12}>
             <SearchForm />
           </Grid>
@@ -42,7 +42,15 @@ function AppContent() {
               </Box>
             )}
             {error && <ErrorMessage message={error} />}
-            {pokemonData && <PokemonCard pokemon={pokemonData} />}
+            {pokemonData.length > 0 && (
+              <Grid container spacing={2}>
+                {pokemonData.map((pokemon) => (
+                  <Grid item xs={12} sm={4} md={4} key={pokemon.id}>
+                    <PokemonCard pokemon={pokemon} />
+                  </Grid>
+                ))}
+              </Grid>
+            )}
           </Grid>
         </Grid>
       </Paper>
