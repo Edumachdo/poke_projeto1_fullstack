@@ -29,7 +29,7 @@ function AppContent() {
             Encontre informações sobre Pokémon.
           </Typography>
         </Box>
-        <Grid container spacing={4} className="app-grid">
+        <Grid container spacing={4} direction="column" className="app-grid">
           <Grid item xs={12}>
             <SearchForm />
           </Grid>
