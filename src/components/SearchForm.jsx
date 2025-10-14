@@ -27,7 +27,7 @@ function SearchForm() {
     <Paper className="search-form-paper">
       <Box component="form" onSubmit={handleSubmit} className="search-form-box">
         <TextField
-          label="Termo de busca (substring do nome)"
+          label="Substring do nome ou ID do Pokémon"
           variant="outlined"
           value={input}
           onChange={(e) => setInput(e.target.value)}
