@@ -20,7 +20,12 @@ function AppContent() {
 
   return (
     <Box className="app-container">
-      <Paper elevation={6} className="app-paper">
+      <Paper
+        elevation={6}
+        className={`app-paper ${
+          pokemonData.length <= 1 ? "app-paper-single" : ""
+        }`}
+      >
         <Box className="app-header">
           <Typography variant="h3" component="h1" gutterBottom>
             Busca de Pokémon
@@ -43,9 +48,21 @@ function AppContent() {
             )}
             {error && <ErrorMessage message={error} />}
             {pokemonData.length > 0 && (
-              <Grid container spacing={2}>
+              <Grid
+                container
+                spacing={2}
+                justifyContent={
+                  pokemonData.length === 1 ? "center" : "flex-start"
+                }
+              >
                 {pokemonData.map((pokemon) => (
-                  <Grid item xs={12} sm={4} md={4} key={pokemon.id}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={pokemonData.length === 1 ? 12 : 4}
+                    md={pokemonData.length === 1 ? 12 : 4}
+                    key={pokemon.id}
+                  >
                     <PokemonCard pokemon={pokemon} />
                   </Grid>
                 ))}

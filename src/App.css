@@ -17,6 +17,10 @@
   backdrop-filter: blur(10px);
 }
 
+.app-paper-single {
+  max-width: 600px;
+}
+
 .app-header {
   margin-bottom: 32px;
   text-align: center;
